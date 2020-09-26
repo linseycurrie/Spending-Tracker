@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+    
+<form action="/merchants/{{merchant.id}}" method="POST">   
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{merchant.name}}">
+    </div>
+
+    <div>
+        <label for="location">Location:</label>
+        <input type="text" name="location" id="location" value="{{merchant.location}}">
+    </div>
+
+    <div>
+        <label for="activated">Activated: </label>
+        <select name="activated" id="activated">
+            <option value=True>Yes</option>
+            <option value=False>No</option>
+        </select>
+    </div>
+
+    <button type="submit">Update Merchant</button>
+
+</form> 
+{% endblock %}

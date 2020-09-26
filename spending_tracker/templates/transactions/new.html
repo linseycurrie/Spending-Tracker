@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+    
+
+    <form action="/transactions">
+        <div>
+            <label for="amount">Enter the transaction amount: &#163;</label>
+            <input type="text" name="amount", id="amount">
+        </div>
+        <div>
+            <label for="merchant">Where did you make this purchase ? </label>
+            <input type="text" name="merchant" id="merchant">
+        </div>
+        <div>
+            <label for="date">When did you make this purchase ? </label>
+            <input type="date" name="date" id="date">
+        </div>
+        <div>
+            <label for="category">What category is this purchase :</label>
+            <input type="category" name="category" id="category" list="category">
+            <datalist name="category" id="category">
+                <option value="groceries">Groceries</option>
+                <option value="clothing">Clothing</option>
+            </datalist>
+        </div>
+
+
+    </form>
+
+    {% endblock %}

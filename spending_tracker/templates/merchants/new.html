@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    
+<form action="/merchants" method="POST">
+    <div>
+        <label for="name">Name of merchant: </label>
+        <input type="text" name="name" id="name">
+    </div>
+    <div>
+        <label for="location">Address: </label>
+        <input type="text" name="location" id="location">
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
+
+
+{% endblock %}

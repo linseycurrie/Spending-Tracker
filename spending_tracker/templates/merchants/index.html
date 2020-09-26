@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Merchants</h2>
+<hr>
+{% for merchant in merchants %}
+    <div class="merchants">
+        <div class="content">
+            {{ merchant.name }}<br>
+            {{ merchant.location }}<br>
+            Activated: 
+        {% if merchant.activated == True %}
+            &#10003;
+        {% elif merchant.activated == False %}
+            &#10060;
+        {% endif %}<br>
+        <br>
+        </div>
+        <form class="more-information" action="/merchants/{{ merchant.id }}">
+            <button class="more-info">More Information</button>
+        </form>
+    </div>
+{% endfor %}
+
+{% endblock %}

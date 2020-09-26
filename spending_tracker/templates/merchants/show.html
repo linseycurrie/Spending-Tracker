@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+    
+    <div>
+        <p>Name: {{merchant.name}}</p>
+        <p>Location: {{merchant.location}}</p>
+        <p>Activated: {{merchant.activated}}</p>
+        <a href="/merchants/{{merchant.id}}/edit">Edit</a>
+    </div>
+
+
+
+{% endblock %}
