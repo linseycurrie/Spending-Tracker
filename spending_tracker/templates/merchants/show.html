@@ -4,7 +4,13 @@
     <div>
         <p>Name: {{merchant.name}}</p>
         <p>Location: {{merchant.location}}</p>
-        <p>Activated: {{merchant.activated}}</p>
+        <p>
+            {% if merchant.activated == True %}
+                Activated: Yes
+            {% else %}
+                Activated: No
+            {% endif %}
+        </p>
         <a href="/merchants/{{merchant.id}}/edit">Edit</a>
     </div>
 

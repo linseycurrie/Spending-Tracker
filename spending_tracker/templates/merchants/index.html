@@ -9,16 +9,17 @@
             {{ merchant.name }}<br>
             {{ merchant.location }}<br>
             Activated: 
-        {% if merchant.activated == True %}
+        {% if merchant.activated ==True %}
             &#10003;
-        {% elif merchant.activated == False %}
+        {% else %}
             &#10060;
         {% endif %}<br>
         <br>
         </div>
         <form class="more-information" action="/merchants/{{ merchant.id }}">
-            <button class="more-info">More Information</button>
+            <button class="more-info">More Info</button>
         </form>
+        <br>
     </div>
 {% endfor %}
 

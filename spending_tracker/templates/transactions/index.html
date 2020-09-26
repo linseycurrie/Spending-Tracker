@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+ 
+<a href="/transactions/new">Add Transaction</a>
+<h2>Transactions</h2>
+<hr>
+
+<table style="width:80%">
+    <thead>
+    <tr>
+        <th>Category</th>
+        <th>Merchant</th>
+        <th>Amount</th>
+        <th>Date</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        
+    </tr>
+    </thead>
+    {% for transaction in transactions  %}
+    <tbody>
+
+    <tr>
+    
+        <td>{{transaction.category}}</td>
+        <td>{{transaction.merchant.name}}</td>
+        <td>{{transaction.amount}}</td>
+        <td>{{transaction.date}}</td>
+        <td><form action="/transactions/{{transaction.id}}/edit">
+            <button>&#x270e;</button> </form></td>
+        <td><form action="/transactions/{{transaction.id}}/delete">
+            <button>&#128465;</button>  </form></td>
+
+    
+    </tr>
+    </tbody>    
+    {% endfor %}
+</table>
+
+{% endblock %}

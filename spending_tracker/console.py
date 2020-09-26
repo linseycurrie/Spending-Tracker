@@ -16,8 +16,8 @@ oasis = Merchant("Oasis", "Edinburgh")
 asda = Merchant("Asda", "Glasgow")
 goOutdoors = Merchant("Go Outdoors", "Clydebank")
 
-transaction1 = Transaction(25.00, "Clothing", tesco)
-transaction2 = Transaction(5.00, "Groceres",  oasis)
+transaction1 = Transaction(25.00, "Clothing", "2020-09-22", tesco)
+transaction2 = Transaction(5.00, "Groceres", "2020-01-12",  oasis)
 
 
 user_repository.save(user1)

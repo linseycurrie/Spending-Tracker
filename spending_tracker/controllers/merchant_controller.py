@@ -39,6 +39,6 @@ def update_merchant(id):
     name = request.form['name']
     location = request.form['location']
     activated = request.form['activated']
-    merchant = Merchant(name, location, activated)
+    merchant = Merchant(name, location, activated, id)
     merchant_repository.update(merchant)
     return redirect("/merchants")
