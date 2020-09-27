@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Categorys</h2>
+<hr>
+
+<a href="/categorys/new">Add a Category</a>
+
+<table style="width:80%">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Activated</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+{% for category in categorys %}
+<tbody>
+    <tr>
+        <td style="text-align: center;"> {{ category.name }} </td>
+        <td style="text-align: center;">
+            {% if category.activated == True %}
+                &#10003;
+            {% else %}
+                &#10060;
+            {% endif %}
+        </td>
+        <td style="text-align: center;"><form action="/categorys/{{ category.id }}/edit">
+            <button>&#x270e;</button></form></td>
+        <td style="text-align: center;"><form action="/categorys/{{ category.id }}/delete" method="POST">
+            <button>&#128465;</button></form></td>
+    
+    </tr>
+    </tbody>    
+{% endfor %}
+
+</table>
+
+
+{% endblock %}

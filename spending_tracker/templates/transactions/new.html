@@ -1,41 +1,41 @@
 {% extends 'base.html' %}
 {% block content %}
     
+    <h2>New Transaction</h2>
+    <hr>
 
     <form action="/transactions" method="POST">
+        <br>
         <div>
             <label for="amount">Enter the transaction amount: &#163;</label>
             <input type="text" name="amount", id="amount">
         </div>
 
-        <div>
-            <label for="category">What category is this purchase :</label>
-            <input type="category" name="category" id="category" list="category">
-            <datalist name="category" id="category">
-                <option value="groceries">Groceries</option>
-                <option value="clothing">Clothing</option>
-            </datalist>
-        </div>
-
-        <div>
-            <label for="date">When did you make this purchase ? </label>
-            <input type="date" name="date" id="date">
-        </div>
-
+        <br>
         <div>
             <label for="merchant">Where did you make this purchase ? </label>
             <select name="merchant_id" id="merchant">
-            {% for merchant in merchants %}
-                <option value="{{ merchant.id }}">{{ merchant.name }}</option>
-            {% endfor %}
+                {% for merchant in merchants %}
+                    <option value="{{ merchant.id }}">{{ merchant.name }}</option>
+                {% endfor %}
             </select>
         </div>
-
-
-
-
-
-        <button type="submit">Add</button>
+        <br>
+        <div>
+            <label for="date"> When did you make this purchase ? </label><br>
+            <input type="date" name="date" id="date">
+        </div>
+        <br>
+        <div>
+            <label for="category">What category is this transaction? </label>
+            <select name="category_id" id="category">
+                {% for category in categorys %}
+                    <option value="{{ category.id }}">{{ category.name }}</option>
+                {% endfor %} <br>
+            </select>
+        </div>
+        <br>
+    <button type="submit">Add</button>
 
     </form>
 

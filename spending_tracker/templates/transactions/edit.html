@@ -4,16 +4,17 @@
 <form action="/transactions/{{transaction.id}}" method="POST">
     <div>
         <label for="amount">Amount: &#163;</label>
-        <input type="text" name="amount" id="amount" value="{{transaction.amount}}">
+        <input type="text" name="amount" id="amount" value="{{transaction.amount}}" required>
     </div>
 
     <div>
         <label for="category">Category: </label>
-        <select name="category" id="category">
-            {% for all_trans in all_transactions %}
-            <option value="{{ transaction.category }}">
-                {{ transaction.category }}
-            </option>  
+        <select name="category_id" id="category">
+            {% for category in categorys %}
+                <option value="{{ category.id }}"
+                    {% if transaction.category.id == category.id %} selected=selected {% endif %}>
+                    {{ category.name }}
+                </option>  
             {% endfor %}
         </select>
     </div>
@@ -35,12 +36,8 @@
         </select>
     </div>
 
-
-
-
-    <div>
-        <button type="submit">Save</button>
-    </div>
+    <button type="submit">Save</button>
+    
 
 </form>
 

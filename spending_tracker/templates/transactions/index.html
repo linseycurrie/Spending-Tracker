@@ -5,7 +5,7 @@
 <h2>Transactions</h2>
 <hr>
 
-<table style="width:80%">
+<table style="width:90%">
     <thead>
     <tr>
         <th>Category</th>
@@ -14,21 +14,21 @@
         <th>Date</th>
         <th>Edit</th>
         <th>Delete</th>
-        
     </tr>
     </thead>
+
     {% for transaction in transactions  %}
     <tbody>
 
     <tr>
     
-        <td>{{transaction.category}}</td>
-        <td>{{transaction.merchant.name}}</td>
-        <td>{{transaction.amount}}</td>
-        <td>{{transaction.date}}</td>
-        <td><form action="/transactions/{{transaction.id}}/edit">
+        <td style="text-align: center;">{{transaction.category.name}}</td>
+        <td style="text-align: center;">{{transaction.merchant.name}}</td>
+        <td style="text-align: center;">{{transaction.amount}}</td>
+        <td style="text-align: center;">{{transaction.date}}</td>
+        <td style="text-align: center;"><form action="/transactions/{{transaction.id}}/edit">
             <button>&#x270e;</button> </form></td>
-        <td><form action="/transactions/{{transaction.id}}/delete">
+        <td style="text-align: center;"><form action="/transactions/{{transaction.id}}/delete" method="POST">
             <button>&#128465;</button>  </form></td>
 
     

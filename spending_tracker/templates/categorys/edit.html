@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form action="/categorys/{{category.id}}" method="POST">
+    <div>
+        <label for="name">Name: </label>
+        <input type="text" name="name" id="name" value="{{category.name}}" required>
+    </div>  
+    <div>
+        <label for="activated">Activated: </label>
+        <select name="activated" id="activated">
+            <option value=True {% if category.activated == True %} selected=selected {% endif %}>Yes</option>
+            <option value=False {% if category.activated == False %} selected=selected {% endif %}>No</option>
+        </select>
+    </div>
+
+    <button type="submit">Save</button>
+</form>
+
+
+{% endblock %}
