@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
- 
-<a href="/transactions/new">Add Transaction</a>
+
+
 <h2>Transactions</h2>
+<br>
+<form action="/transactions/new">
+    <button>Add Transaction</button></form>
+
 <hr>
 
-<table style="width:90%;">
+
+<table style="width:80%;">
     <thead>
     <tr>
         <th>Category</th>
@@ -39,14 +44,35 @@
         </tr>
     </tbody> 
 </table>
-<!-- <label for="month">Sort Transaction by Month: </label>
-<select name="month" id="month" >
-    <option value="01">January</option>
-    <option value="02">February</option>
-    <option value="03">January</option>
-    <option value="01">January</option>
-    <option value="01">January</option>
-</select>
-<a href="/transactions/<month>"></a> -->
 
+<h3>Sort Transactions by:</h3>
+<form action="/transactions/{{month}}">
+<label for="month">Sort by Month:</label>
+    <select name="month" id="month">
+        <option value="01">January</option>
+        <option value="02">February</option>
+        <option value="03">March</option>
+        <option value="04">April</option>
+        <option value="05">May</option>
+        <option value="05">June</option>
+        <option value="05">July</option>
+        <option value="05">August</option>
+        <option value="05">September</option>
+        <option value="05">October</option>
+        <option value="05">November</option>
+        <option value="05">December</option>
+    </select>
+    <button type="submit">Submit</button>
+</form>
+
+<form action="/transactions/{{category}}">
+<h3>Sort by Category:</h3>
+    <label for="category">Sort by Category: </label>
+    <select name="category" id="category">
+        {% for category in categorys %}
+            <option value="{{category.id}}">{{ category.name }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Submit</button>
+</form>
 {% endblock %}

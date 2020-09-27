@@ -36,3 +36,8 @@ def update(merchant):
     values = [merchant.name, merchant.location, merchant.activated, merchant.id]
     print(values)
     run_sql(sql, values)
+
+def delete(id):
+    sql = "DELETE FROM merchants WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)

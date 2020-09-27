@@ -7,3 +7,4 @@ import repositories.user_repository as user_repository
 
 users_blueprint = Blueprint("users", __name__)
 
+

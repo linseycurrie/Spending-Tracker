@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-    
+
+<h2>New Merchant</h2>
+<hr>
 <form action="/merchants" method="POST">
     <div>
         <label for="name">Name of merchant: </label>
-        <input type="text" name="name" id="name">
+        <input type="text" name="name" id="name" required>
     </div>
     <div>
         <label for="location">Address: </label>
-        <input type="text" name="location" id="location">
+        <input type="text" name="location" id="location" required>
     </div>
     <button type="submit">Submit</button>
 </form>

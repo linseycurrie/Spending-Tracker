@@ -2,9 +2,13 @@
 {% block content %}
 
 <h2>Merchants</h2>
+
+<form action="/merchants/new">
+    <button>New Merchant</button>  </form>
+
 <hr>
 {% for merchant in merchants %}
-    <div class="merchants">
+    <div class="flex-container">
         <div class="content">
             {{ merchant.name }}<br>
             {{ merchant.location }}<br>
@@ -16,11 +20,13 @@
         {% endif %}<br>
         <br>
         </div>
-        <form class="more-information" action="/merchants/{{ merchant.id }}">
-            <button class="more-info">More Info</button>
-        </form>
+        <form action="/merchants/{{ merchant.id }}/edit">
+            <button>Edit</button></form>
+        <form action="/merchants/{{merchant.id}}/delete" method="POST">
+            <button>Delete</button></form>
         <br>
     </div>
 {% endfor %}
+</form>
 
 {% endblock %}

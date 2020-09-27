@@ -56,10 +56,14 @@ def total_amount(transactions):
         total += transaction.amount
     return total
 
-# def sort_by_month(transactions, month):
-#     transactions = []
-#     for transaction in transactions:
-#         date = transaction.date.split('-')
-#         if date[2] == month:
-#             transactions.append(transaction)
-#     return transactions
+def sort_transactions(transactions):
+    transactions = []
+    sql = "SELECT * FROM transactions ORDER BY date ASC"
+    results = run_sql(sql)
+
+    for row in results:
+        merchant = merchant_repository.select( row['merchant_id'] )
+        category = category_repository.select( row['category_id'])
+        transaction = Transaction( row['amount'], category, row['date'], merchant, row['id'] )
+        transactions.append(transaction)
+    return transactions

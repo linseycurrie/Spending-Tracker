@@ -11,10 +11,15 @@
         <label for="category">Category: </label>
         <select name="category_id" id="category">
             {% for category in categorys %}
-                <option value="{{ category.id }}"
-                    {% if transaction.category.id == category.id %} selected=selected {% endif %}>
-                    {{ category.name }}
-                </option>  
+                {% if category.activated == False %}
+                    <option value="{{category.id" disabled>{{category.name}}</option>
+                    
+                {% else %}
+                    <option value="{{ category.id }}"
+                        {% if transaction.category.id == category.id %} selected=selected {% endif %}>
+                        {{ category.name }}
+                    </option>  
+                {% endif %}
             {% endfor %}
         </select>
     </div>

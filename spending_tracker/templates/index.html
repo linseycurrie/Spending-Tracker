@@ -2,7 +2,31 @@
 
 {% block content %}
     
-This will be the homepage
 
-<a href="/users">Login</a>
+<h2>Managing money has never been easier</h2>
+<h3>SS is a money tracker that allows you to keep track of your expenses and savings all in one place.</h3>
+
+<h4>Login: </h4>
+<label for="username">Username: </label>
+<input type="text" name="username" id="username">
+<br>
+<label for="password">Password: </label>
+<input type="text" name="password" id="password">
+<br>
+<button><a href="/options">Enter</a> </button>
+
+<h2>Lets get started..</h2>
+
+<h4>Add a new Merchant..</h4>
+
+<form action="/merchants/new">
+    <button >New Merchant</button>  </form>
+
+<h4>Or add a new Category..</h4>
+<form action="/categorys/new">
+    <button>New Category</button>  </form>
+
+
+
+
 {% endblock %}
