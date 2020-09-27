@@ -11,7 +11,8 @@ transactions_blueprint = Blueprint("transactions", __name__)
 @transactions_blueprint.route("/transactions")
 def transactions():
     transactions = transaction_repository.select_all()
-    return render_template("transactions/index.html", transactions=transactions)
+    total = transaction_repository.total_amount(transactions)
+    return render_template("transactions/index.html", transactions=transactions, total=total)
 
 @transactions_blueprint.route("/transactions/new", methods=['GET'])
 def new_transaction():
@@ -29,10 +30,11 @@ def create_transactions():
     transaction_repository.save(transaction)
     return redirect("/transactions")
 
-@transactions_blueprint.route("/transactions/<id>", methods=['GET'])
-def show_transaction(id):
-    transaction = transaction_repository.select(id)
-    return render_template("transactions/show.html", transaction=transaction)
+@transactions_blueprint.route("/transactions/<month>", methods=['GET'])
+def show_transaction(month):
+    transactions = transaction_repository.select_all()
+    selected_transactions = transaction_repository.sort_by_month(transactions, month)
+    return render_template("transactions/show.html", selected_transactions=selected_transactions, month=month)
 
 @transactions_blueprint.route("/transactions/<id>/edit", methods=['GET'])
 def edit_transaction(id):

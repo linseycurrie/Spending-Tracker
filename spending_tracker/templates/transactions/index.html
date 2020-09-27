@@ -5,7 +5,7 @@
 <h2>Transactions</h2>
 <hr>
 
-<table style="width:90%">
+<table style="width:90%;">
     <thead>
     <tr>
         <th>Category</th>
@@ -30,11 +30,23 @@
             <button>&#x270e;</button> </form></td>
         <td style="text-align: center;"><form action="/transactions/{{transaction.id}}/delete" method="POST">
             <button>&#128465;</button>  </form></td>
-
-    
     </tr>
-    </tbody>    
     {% endfor %}
+    <tfoot>
+        <tr>
+            <th id="total" colspan="2" style="text-align: center;">Total: </th>
+            <td style="text-align: center;">{{total}}</td>
+        </tr>
+    </tbody> 
 </table>
+<!-- <label for="month">Sort Transaction by Month: </label>
+<select name="month" id="month" >
+    <option value="01">January</option>
+    <option value="02">February</option>
+    <option value="03">January</option>
+    <option value="01">January</option>
+    <option value="01">January</option>
+</select>
+<a href="/transactions/<month>"></a> -->
 
 {% endblock %}

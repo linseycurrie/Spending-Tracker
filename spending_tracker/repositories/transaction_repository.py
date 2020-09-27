@@ -49,3 +49,17 @@ def delete(id):
     sql = "DELETE FROM transactions WHERE id = %s"
     values = [id]
     run_sql(sql, values)
+
+def total_amount(transactions):
+    total = 0
+    for transaction in transactions:
+        total += transaction.amount
+    return total
+
+# def sort_by_month(transactions, month):
+#     transactions = []
+#     for transaction in transactions:
+#         date = transaction.date.split('-')
+#         if date[2] == month:
+#             transactions.append(transaction)
+#     return transactions
