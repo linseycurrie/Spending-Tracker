@@ -28,7 +28,6 @@ CREATE TABLE transactions(
     amount DECIMAL(19,2),
     category_id INT REFERENCES categorys(id) ON DELETE CASCADE,
     date DATE,
-    merchant_id INT REFERENCES merchants(id) ON DELETE CASCADE,
-    user_id INT REFERENCES users(id) ON DELETE CASCADE 
+    merchant_id INT REFERENCES merchants(id) ON DELETE CASCADE
 );
 

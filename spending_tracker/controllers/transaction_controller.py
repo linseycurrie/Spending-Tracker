@@ -72,4 +72,5 @@ def filter_category():
     filter = request.form['filter']
     filtered_transactions = transaction_repository.filter_by_category(filter)
     categorys = category_repository.select_all()
-    return render_template("transactions/index.html", transactions=filtered_transactions, categorys=categorys)
+    total = transaction_repository.total_amount(filtered_transactions)
+    return render_template("transactions/index.html", transactions=filtered_transactions, categorys=categorys, total=total)

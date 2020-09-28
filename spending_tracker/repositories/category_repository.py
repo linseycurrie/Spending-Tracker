@@ -12,7 +12,7 @@ def save(category):
 def select_all():
     categorys =[]
 
-    sql = "SELECT * FROM categorys"
+    sql = "SELECT * FROM categorys ORDER BY name ASC"
     results = run_sql(sql)
 
     for row in results:

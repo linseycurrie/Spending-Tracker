@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
-    <title>Spending Tracker</title>
 </head>
 <body>
     <header>
@@ -12,18 +11,18 @@
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/transactions/new">New Transactions</a></li>
-            </ul>
-            <form action="/transactions">
-                <button>Transactions</button></form>
+                <li><a href="/transactions/new">Add Transaction</a></li>
+                <li><a href="/merchants">Merchants</a></li>
+                <li><a href="/categorys">Categorys</a></li>
+            </ul>           
         </nav>
-
-
     </header>
-    
-    {% block content %}
+    <div class="container">  
+        {% block content %}
         
-    {% endblock %}
+        {% endblock %}    
+    </div>
+
 
 </body>
 </html>
