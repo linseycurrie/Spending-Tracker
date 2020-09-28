@@ -67,3 +67,29 @@ def sort_transactions(transactions):
         transaction = Transaction( row['amount'], category, row['date'], merchant, row['id'] )
         transactions.append(transaction)
     return transactions
+
+def filter_by_month(month):
+    transactions = []
+    sql = "SELECT * FROM transactions WHERE EXTRACT (MONTH from date) = %s "
+    values = [month]
+    results = run_sql(sql, values)
+
+    for row in results:
+        merchant = merchant_repository.select( row['merchant_id'] )
+        category = category_repository.select( row['category_id'])
+        transaction = Transaction( row['amount'], category, row['date'], merchant, row['id'] )
+        transactions.append(transaction)
+    return transactions
+
+def filter_by_category(category_id):
+    transactions = []
+    sql = "SELECT * FROM transactions WHERE category_id = %s "
+    values = [category_id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        merchant = merchant_repository.select( row['merchant_id'] )
+        category = category_repository.select( row['category_id'])
+        transaction = Transaction( row['amount'], category, row['date'], merchant, row['id'] )
+        transactions.append(transaction)
+    return transactions

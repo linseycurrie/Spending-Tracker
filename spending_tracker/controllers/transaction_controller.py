@@ -32,10 +32,10 @@ def create_transactions():
     transaction_repository.save(transaction)
     return redirect("/transactions")
 
-@transactions_blueprint.route("/transactions/<month>", methods=['GET'])
-def show_transaction(month):
-    transactions = transaction_repository.select_all()
-    return render_template("transactions/show.html", transactions=transactions)
+# @transactions_blueprint.route("/transactions/<id>", methods=['GET'])
+# def show_transaction(id):
+#     transactions = transaction_repository.select(id)
+#     return render_template("transactions/show.html", transactions=transactions)
 
 @transactions_blueprint.route("/transactions/<id>/edit", methods=['GET'])
 def edit_transaction(id):
@@ -59,3 +59,17 @@ def update_transaction(id):
 def delete_transaction(id):
     transaction_repository.delete(id)
     return redirect("/transactions")
+
+@transactions_blueprint.route("/transactions/filteredmonth", methods=['POST'])
+def filter_month():
+    filter = request.form['filter']
+    filtered_transactions = transaction_repository.filter_by_month(filter)
+    categorys = category_repository.select_all()
+    return render_template("transactions/index.html", transactions=filtered_transactions, categorys=categorys)
+
+@transactions_blueprint.route("/transactions/filteredcategory", methods=['POST'])
+def filter_category():
+    filter = request.form['filter']
+    filtered_transactions = transaction_repository.filter_by_category(filter)
+    categorys = category_repository.select_all()
+    return render_template("transactions/index.html", transactions=filtered_transactions, categorys=categorys)

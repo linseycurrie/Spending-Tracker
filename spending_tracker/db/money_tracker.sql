@@ -13,8 +13,8 @@ CREATE TABLE merchants(
 CREATE TABLE users(
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
-    spending_limit DECIMAL(19,4),
-    savings_goal DECIMAL(19,4)
+    spending_limit DECIMAL(19,2),
+    savings_goal DECIMAL(19,2)
 );
 
 CREATE TABLE categorys (

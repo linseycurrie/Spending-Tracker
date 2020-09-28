@@ -46,29 +46,29 @@
 </table>
 
 <h3>Sort Transactions by:</h3>
-<form action="/transactions/{{month}}">
-<label for="month">Sort by Month:</label>
-    <select name="month" id="month">
+<form action="/transactions/filteredmonth" method="POST">
+<label for="filter">Sort by Month:</label>
+    <select name="filter" id="filter">
         <option value="01">January</option>
         <option value="02">February</option>
         <option value="03">March</option>
         <option value="04">April</option>
         <option value="05">May</option>
-        <option value="05">June</option>
-        <option value="05">July</option>
-        <option value="05">August</option>
-        <option value="05">September</option>
-        <option value="05">October</option>
-        <option value="05">November</option>
-        <option value="05">December</option>
+        <option value="06">June</option>
+        <option value="07">July</option>
+        <option value="08">August</option>
+        <option value="09">September</option>
+        <option value="10">October</option>
+        <option value="11">November</option>
+        <option value="12">December</option>
     </select>
     <button type="submit">Submit</button>
 </form>
 
-<form action="/transactions/{{category}}">
+<form action="/transactions/filteredcategory" method="POST">
 <h3>Sort by Category:</h3>
-    <label for="category">Sort by Category: </label>
-    <select name="category" id="category">
+    <label for="filter">Sort by Category: </label>
+    <select name="filter" id="filter">
         {% for category in categorys %}
             <option value="{{category.id}}">{{ category.name }}</option>
         {% endfor %}

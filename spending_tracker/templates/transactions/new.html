@@ -16,7 +16,11 @@
             <label for="merchant">Where did you make this purchase ? </label>
             <select name="merchant_id" id="merchant">
                 {% for merchant in merchants %}
+                    {% if merchant.activated == False %}
+                    <option value="{{merchant.id}}" disabled>{{merchant.name}}</option>
+                    {% else %}   
                     <option value="{{ merchant.id }}">{{ merchant.name }}</option>
+                    {% endif %}
                 {% endfor %}
             </select>
         </div>
@@ -30,7 +34,11 @@
             <label for="category">What category is this transaction? </label>
             <select name="category_id" id="category">
                 {% for category in categorys %}
+                    {% if category.activated == False %}
+                    <option value="{{category.id}}" disabled>{{category.name}}</option>
+                    {% else %}   
                     <option value="{{ category.id }}">{{ category.name }}</option>
+                    {% endif %}
                 {% endfor %} <br>
             </select>
         </div>
