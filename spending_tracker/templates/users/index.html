@@ -1,31 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
     
+<h2>User</h2>
 
-<form action="/transactions" method="POST">
-    <div>
-        <label for="name">User name:</label>
-        <input type="text" name="name" id="name">
-    </div>
+<h3>Hi {{user.name}}</h3>
 
-    <div>
-        <label for="spending_limit">Set a spending limit: &#163;</label>
-        <input type="text" name="spending_limit" id="spending_limit">
-    </div>
+<h4>What would you like to do today ?</h4>
 
-    <div>
-        <label for="savings_goal">Set a spending goal: &#163;</label>
-        <input type="text" name="savings_goal" id="savings_goal">
-    </div>
-
-    <button type="submit">Submit</button>
-
-
-
-
-</form>
-
-
+<form action="/transactions"><button>See Transactions</button></form>
+<form action="/merchants/new"><button>Add a new Merchant</button></form>
+<form action="/categorys/new"><button>Add a new Category</button></form>
 
 
 

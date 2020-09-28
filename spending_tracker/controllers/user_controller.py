@@ -7,6 +7,10 @@ import repositories.user_repository as user_repository
 
 users_blueprint = Blueprint("users", __name__)
 
+@users_blueprint.route("/users")
+def users():
+    return render_template("users/index.html", users=users)
+
 @users_blueprint.route("/users/new", methods=['GET'])
 def new_users():
     return render_template("users/new.html")
@@ -18,4 +22,4 @@ def create_user():
     spending_limit = request.form['spending_limit']
     user = User(name, spending_limit, savings_goal)
     user_repository.save(user)
-    return redirect("users")
+    return render_template("/users/index.html", user=user)
