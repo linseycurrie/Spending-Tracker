@@ -10,20 +10,19 @@
         <img src="../static/cool_pig.jpg" alt="piggybank" style="resize: 30%;">
         <nav>
             <ul>
-                <li><form action="/"> <button>Home</button></form></li>
-                <li><form action="/transactions"> <button>Transactions</button></form></li>
-                <li><form action="/merchants"> <button>Merchants</button></form></li>
-                <li><form action="/categorys"> <button>Categorys</button></form></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/transactions/new">Add Transaction</a></li>
+                <li><a href="/merchants">Merchants</a></li>
+                <li><a href="/categorys">Categorys</a></li>
             </ul>           
         </nav>
     </header>
-    <main>
     <div class="container">  
         {% block content %}
         
         {% endblock %}    
     </div>
-    </main>
+
 
 </body>
 </html>
