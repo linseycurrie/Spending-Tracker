@@ -2,7 +2,7 @@
 {% block content %}
 
 
-<h2>Transactions</h2>
+<h1>Transactions</h1>
 <br>
 <form action="/transactions/new">
     <button>Add Transaction</button></form>
@@ -46,11 +46,11 @@
     </tbody> 
 </table>
 
-<h3>Sort Transactions by:</h3>
+<h2>Sort Transactions by:</h2>
 <div class="flex-container">
     <section class="contents">
         <form action="/transactions/filteredmonth" method="POST">
-        <label for="filter"><h3>Sort by Month: </h3></label>
+        <label for="filter"><h3>Month: </h3></label>
             <select name="filter" id="filter">
                 <option value="01">January</option>
                 <option value="02">February</option>
@@ -72,7 +72,7 @@
     <section class="contents">
 
         <form action="/transactions/filteredcategory" method="POST">
-            <label for="filter"><h3>Sort by Category: </h3></label>
+            <label for="filter"><h3>Category: </h3></label>
             <select name="filter" id="filter">
                 {% for category in categorys %}
                     <option value="{{category.id}}">{{ category.name }}</option>
@@ -84,7 +84,7 @@
         
     <section class="contents">
         <form action="/users/filter" method="POST">
-            <label for="user_id"><h3>Sort by User: </h3></label>
+            <label for="user_id"><h3>User: </h3></label>
             <select name="user_id" id="user_id">
             {% for user in users %}
                     <option value="{{user.id}}">{{ user.name }}</option>

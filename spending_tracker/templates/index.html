@@ -1,35 +1,30 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    
 <p>
-    <h2>Managing money has never been easier</h2>
-    <h3>Savy Spender is a expense tracker that allows you to keep track of your expenses and savings all in one place.</h3>
+    <h2 style="text-align: center;">Managing money has never been easier</h2>
+    <h3 style="text-align: center;">Savy Spender is an expense tracker that allows you to keep track of your expenses and savings all in one place.</h3>
 </p>
 <br>
-
+<h2>If you are a new user click here</h2>
 <form action="/users/new">
-    <button>New User</button></form>
+    <button class="NewUserButton">New User</button></form>
 
 
-<h2>Lets get started..</h2>
+<h2>Otherwise lets get started..</h2>
         <section class="flex-container">
             <div class="content">
-                <h4>Add a new Merchant..</h4>
-            
                 <form action="/merchants/new">
-                    <button >New Merchant</button></form>
+                    <button >Add Merchant</button></form>
             </div>
 
             <div class="content">
-                <h4>Add a new Category..</h4>
                 <form action="/categorys/new">
-                    <button>New Category</button>  </form>
+                    <button>Add Category</button>  </form>
             </div>
             <div class="content">
-                <h4>See Transaction history..</h4>
                 <form action="/transactions">
-                    <button>Transactions</button></form>
+                    <button> SeeTransactions</button></form>
         </div>
     </section>
 

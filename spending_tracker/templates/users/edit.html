@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    
+    <form action="/users/{{user.id}}" method="POST">
+        <label for="name">Name: </label>
+        <input type="text" name="name" id="name" value="{{user.name}}">
+
+        <label for="spending_limit">What would you like to set your spending limit to ?</label>
+        <input type="spending_limit" name="spending_limit" id="spending_limit" value="{{user.spending_limit}}" required>
+
+
+        <button type="submit">Submit</button>
+
+    </form>
+
+{% endblock %}

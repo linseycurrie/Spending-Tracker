@@ -2,8 +2,8 @@ from db.run_sql import run_sql
 from models.user import User
 
 def save(user):
-    sql = "INSERT INTO users(name, spending_limit, savings_goal) VALUES ( %s, %s, %s ) RETURNING id"
-    values = [user.name, user.spending_limit, user.savings_goal]
+    sql = "INSERT INTO users(name, spending_limit) VALUES ( %s, %s ) RETURNING id"
+    values = [user.name, user.spending_limit]
     results = run_sql( sql, values )
     user.id = results[0]['id']
     return user
@@ -15,7 +15,7 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        user = User( row['name'], row['spending_limit'], row['savings_goal'], row['id'] )
+        user = User( row['name'], row['spending_limit'], row['id'] )
         users.append(user)
     return users
 
@@ -26,5 +26,11 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        user = User( result['name'], result['spending_limit'], result['savings_goal'], result['id'] )
+        user = User( result['name'], result['spending_limit'], result['id'] )
     return user
+
+def update(user):
+    sql = "UPDATE users SET (name, spending_limit) = ( %s, %s) WHERE id = %s"
+    values = [user.name, user.spending_limit, user.id]
+    print(values)
+    run_sql(sql, values)

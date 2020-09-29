@@ -18,9 +18,8 @@ def new_users():
 @users_blueprint.route("/users", methods=['POST'])
 def create_user():
     name = request.form['name']
-    savings_goal = request.form['savings_goal']
     spending_limit = request.form['spending_limit']
-    user = User(name, spending_limit, savings_goal)
+    user = User(name, spending_limit)
     user_repository.save(user)
     return render_template("/users/index.html", user=user)
 
@@ -32,6 +31,18 @@ def show_user_transactions():
     filter_transactions = transaction_repository.filter_by_user(user_id)
     total = transaction_repository.total_amount(filter_transactions)
     alert = user.alert_near_limit(total)
-    print(user.__dict__)
-    print(alert)
     return render_template("/users/show.html", user=user, filter_transactions=filter_transactions, total = total, alert=alert)
+
+@users_blueprint.route("/users/<id>/edit", methods=['GET'])
+def edit_user(id):
+    user = user_repository.select(id)
+    return render_template("users/edit.html", user=user)
+
+@users_blueprint.route("/users/<id>", methods=['POST'])
+def update_user_spending_limit(id):
+    name = request.form['name']
+    spending_limit = request.form['spending_limit']
+    user = User(name, spending_limit, id)
+    user_repository.update(user)
+    return redirect("/transactions")
+

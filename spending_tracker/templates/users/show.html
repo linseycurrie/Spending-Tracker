@@ -5,7 +5,7 @@
 
 <h2>{{user.name}}'s Transactions</h2>
 
-<table class='table' style="width:80%">
+<table class='table' style="width:100%">
     <thead>
         <tr>
             <th>Category</th>
@@ -38,12 +38,25 @@
     </tfoot> 
 </table>
     
-<section>
-    {% if alert == True %}
-        <h1>{{user.name}} Watch out you are nearing your spending limit !!!</h1>
-        
+<section class="alert">
+    {% if alert == "over" %}
+        <h1 >{{user.name}}, you are over your spending limit !!!</h1>
+        <div class ="limit"></div>
+            <h4 style="color: black; font-size: 25px;">Your spending limit is {{user.spending_limit}}. Do you wish to increase it ?</h4>
+            <form action="/users/{{user.id}}/edit"><button>Yes</button></form>
+            <form action="/transactions"><button>No</button></form>
+        </div>
+    {% elif alert == "warning" %}
+        <h1 >{{user.name}}, you are near your spending limit !!!</h1>
+        <div class="limit">
+            <h4 style="color: black; font-size: 25px;">Your spending limit is {{user.spending_limit}}. Do you wish to increase it ?</h4>
+            <form action="/users/{{user.id}}/edit"><button>Yes</button></form>
+            <form action="/transactions"><button>No</button></form>
+        </div>
     {% endif %}
 </section>
+
+
 
 
 
