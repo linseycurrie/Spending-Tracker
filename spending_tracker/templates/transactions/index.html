@@ -4,15 +4,21 @@
 
 <h2>Transactions</h2>
 <br>
+<section>
 <form action="/transactions/new">
     <button>Add Transaction</button></form>
 
+<form action="/transactions">
+    <button>View Full List</button></form>
+</section>
 <hr>
+
 
 
 <table class="table" style="width:80%;">
     <thead>
     <tr>
+        <th>User</th>
         <th>Category</th>
         <th>Merchant</th>
         <th>Amount</th>
@@ -26,7 +32,7 @@
     <tbody>
 
     <tr>
-    
+        <td style="text-align: center;">{{transaction.user.name}}</td>
         <td style="text-align: center;">{{transaction.category.name}}</td>
         <td style="text-align: center;">{{transaction.merchant.name}}</td>
         <td style="text-align: center;">{{transaction.amount}}</td>
@@ -45,34 +51,8 @@
     </tbody> 
 </table>
 
-<h3>Sort Transactions by:</h3>
-<form action="/transactions/filteredmonth" method="POST">
-<label for="filter">Sort by Month:</label>
-    <select name="filter" id="filter">
-        <option value="01">January</option>
-        <option value="02">February</option>
-        <option value="03">March</option>
-        <option value="04">April</option>
-        <option value="05">May</option>
-        <option value="06">June</option>
-        <option value="07">July</option>
-        <option value="08">August</option>
-        <option value="09">September</option>
-        <option value="10">October</option>
-        <option value="11">November</option>
-        <option value="12">December</option>
-    </select>
-    <button type="submit">Submit</button>
-</form>
 
-<form action="/transactions/filteredcategory" method="POST">
-<h3>Sort by Category:</h3>
-    <label for="filter">Sort by Category: </label>
-    <select name="filter" id="filter">
-        {% for category in categorys %}
-            <option value="{{category.id}}">{{ category.name }}</option>
-        {% endfor %}
-    </select>
-    <button type="submit">Submit</button>
-</form>
+
+
+
 {% endblock %}

@@ -3,34 +3,38 @@
 
 <h2>Merchants</h2>
 
-<form action="/merchants/new">
-    <button>New Merchant</button>  </form>
-
+<form action="/merchants/new"><button>New Merchant</button>  </form>
 <hr>
-<div class="flex-container">
-{% for merchant in merchants %}
-    
-        <div class="grid-content">
-            {{ merchant.name }}<br>
-            {{ merchant.location }}<br>
-            Activated: 
-        {% if merchant.activated ==True %}
-            &#10003;
-        {% else %}
-            &#10060;
-        {% endif %}<br>
-        <br>
-        </div>
-        <div class="following">
-        <form action="/merchants/{{ merchant.id }}/edit">
-            <button>Edit</button></form>
-        <form action="/merchants/{{merchant.id}}/delete" method="POST">
-            <button>Delete</button></form>
-        <br>
-        </div>
-    
-{% endfor %}
-</div>
 
+<table style="width:80%">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Activated</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    {% for merchant in merchants %}
+    <tbody>
+        <tr>
+            <td style="text-align: center;">{{ merchant.name }}</td>
+            <td style="text-align: center;">{{ merchant.location }}</td>
+            <td style="text-align: center;"> 
+                {% if merchant.activated ==True %}
+                    &#10003;
+                {% else %}
+                    &#10060;
+                {% endif %}</td>
+            <td style="text-align: center;"><form action="/merchants/{{ merchant.id }}/edit">
+                <button>&#x270e;</button></form></td>
+            <td style="text-align: center;><form action="/merchants/{{merchant.id}}/delete" method="POST">
+                <button>&#128465;</button></form><br><br></td>
+        </tr>
+    </tbody>      
+    {% endfor %}
+</table>
 
 {% endblock %}

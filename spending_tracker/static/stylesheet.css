@@ -5,14 +5,6 @@ body {
     grid-row: 2fr 2fr 2fr;
     grid-column: 2fr 2fr 2fr;
     padding: 10px;
-    margin: 100px;
-    display: inline;
-    border: 10px;
-    border: deeppink;
-    border-width: 10px;
-}
-
-.container {
     margin: 10px;
 }
 
@@ -20,19 +12,26 @@ header{
     display: flex;
     justify-content: center;
 }
+ 
+header button {
+    border-radius: 25px;
+    flex-direction: row;
+    justify-items: stretch;
+
+}
 
 nav > ul {
-    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 nav > ul > li {
-    background-color: rgb(255, 255, 0);
-    color: darkslateblue;
     list-style: none;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    margin: 0px;
-    padding: 0px;
-    font-weight: bolder;
+    font-family: ICambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding: 5px
+
+
 }
 
 
@@ -52,13 +51,18 @@ body > header > img {
 
 .user-button {
     color: white;
+    border-radius: 25px;
 }
 
 .flex-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    display: grid;
+    grid-area: auto;
+    grid-row: auto;
+    grid-column: 2fr 2fr 2fr;
+
 }
+
+
 
 .grid-content {
     display: grid;
@@ -66,10 +70,12 @@ body > header > img {
     grid-template-columns: 1fr;
 }
 
-.following {
-    grid-row-start: 2;
-}
 
+
+section {
+    display: flex;
+    justify-content: space-between;
+}
 
 button{
         background-color: darkmagenta;
@@ -85,4 +91,12 @@ button{
     background-color: white;
     background-origin: none;
     padding: 5px;
+}
+
+.table{
+    background-color: cornflowerblue;
+    position: relative;
+    border: black;
+    border-width: 20px;
+    margin-right: 20px;
 }
