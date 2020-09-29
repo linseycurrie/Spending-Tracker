@@ -8,8 +8,8 @@ import repositories.category_repository as category_repository
 import repositories.user_repository as user_repository
 
 def save(transaction):
-    sql = "INSERT INTO transactions (amount, category_id, date, merchant_id) VALUES ( %s, %s, %s, %s ) RETURNING *"
-    values = [transaction.amount, transaction.category.id, transaction.date, transaction.merchant.id]
+    sql = "INSERT INTO transactions (amount, category_id, date, merchant_id, user_id) VALUES ( %s, %s, %s, %s, %s ) RETURNING *"
+    values = [transaction.amount, transaction.category.id, transaction.date, transaction.merchant.id, transaction.user.id]
     results = run_sql(sql, values)
     id = results[0]['id']
     transaction.id = id
@@ -24,7 +24,8 @@ def select_all():
     for row in results:
         merchant = merchant_repository.select( row['merchant_id'] )
         category = category_repository.select( row['category_id'])
-        transaction = Transaction( row['amount'], category, row['date'], merchant, row['id'] )
+        user = user_repository.select( row['user_id'])
+        transaction = Transaction( row['amount'], category, row['date'], merchant, user, row['id'] )
         transactions.append(transaction)
     return transactions
 
@@ -37,12 +38,13 @@ def select(id):
     if result is not None:
         merchant = merchant_repository.select(result['merchant_id'])
         category = category_repository.select(result['category_id'])
-        transaction = Transaction( result['amount'], category, result['date'], merchant, result['id'])
+        user = user_repository.select(result['user_id'])
+        transaction = Transaction( result['amount'], category, result['date'], merchant, user, result['id'])
     return transaction
 
 def update(transaction):
-    sql = "UPDATE transactions SET (amount, category_id, date, merchant_id) = ( %s, %s, %s, %s ) WHERE id = %s"
-    values = [transaction.amount, transaction.category.id, transaction.date, transaction.merchant.id, transaction.id]
+    sql = "UPDATE transactions SET (amount, category_id, date, merchant_id, user_id) = ( %s, %s, %s, %s, %s ) WHERE id = %s"
+    values = [transaction.amount, transaction.category.id, transaction.date, transaction.merchant.id, transaction.user.id, transaction.id]
     print(values)
     run_sql(sql, values)
 
@@ -65,7 +67,8 @@ def sort_transactions(transactions):
     for row in results:
         merchant = merchant_repository.select( row['merchant_id'] )
         category = category_repository.select( row['category_id'])
-        transaction = Transaction( row['amount'], category, row['date'], merchant, row['id'] )
+        user = user_repository.select( row['user_id'])
+        transaction = Transaction( row['amount'], category, row['date'], merchant, user, row['id'] )
         transactions.append(transaction)
     return transactions
 
@@ -78,7 +81,8 @@ def filter_by_month(month):
     for row in results:
         merchant = merchant_repository.select( row['merchant_id'] )
         category = category_repository.select( row['category_id'])
-        transaction = Transaction( row['amount'], category, row['date'], merchant, row['id'] )
+        user = user_repository.select( row['user_id'] )
+        transaction = Transaction( row['amount'], category, row['date'], merchant, user, row['id'] )
         transactions.append(transaction)
     return transactions
 
@@ -91,13 +95,14 @@ def filter_by_category(category_id):
     for row in results:
         merchant = merchant_repository.select( row['merchant_id'] )
         category = category_repository.select( row['category_id'])
-        transaction = Transaction( row['amount'], category, row['date'], merchant, row['id'] )
+        user = user_repository.select( row['user_id'] )
+        transaction = Transaction( row['amount'], category, row['date'], merchant, user, row['id'] )
         transactions.append(transaction)
     return transactions
 
 def filter_by_user(user_id):
     transactions = []
-    sql = "SELECT * FROM users WHERE user_id = %s "
+    sql = "SELECT * FROM transactions WHERE user_id = %s "
     values = [user_id]
     results = run_sql(sql, values)
 

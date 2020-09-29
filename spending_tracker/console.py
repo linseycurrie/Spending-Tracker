@@ -11,10 +11,9 @@ import repositories.user_repository as user_repository
 import repositories.category_repository as category_repository
 
 user1 = User("John", 20.00, 30.00)
-user2 = User("Sue", 20.00, 10.00)
 
 user_repository.save(user1)
-user_repository.save(user2)
+
 
 merchant1 = Merchant("Tesco", "Glasgow")
 merchant2 = Merchant("Oasis", "Edinburgh")
@@ -32,9 +31,9 @@ category_repository.save(category1)
 category_repository.save(category2)
 category_repository.save(category3)
 
-transaction1 = Transaction(25.00, category2, "2020-09-22", merchant1)
-transaction2 = Transaction(5.00, category1, "2020-01-12",  merchant2)
-transaction3 = Transaction(10.00, category3, "2020-02-15", merchant3)
+transaction1 = Transaction(25.00, category2, "2020-09-22", merchant1, user1)
+transaction2 = Transaction(5.00, category1, "2020-01-12",  merchant2, user1)
+transaction3 = Transaction(10.00, category3, "2020-02-15", merchant3, user1)
 
 transaction_repository.save(transaction1)
 transaction_repository.save(transaction2)

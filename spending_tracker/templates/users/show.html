@@ -16,7 +16,7 @@
             <th>Delete</th>
         </tr>
     </thead>
-    {% for transaction in filter_transactions %}
+            {% for transaction in filter_transactions %}
     <tbody>
         <tr>
             <td style="text-align: center;">{{transaction.category.name}}</td>
@@ -28,16 +28,22 @@
             <td style="text-align: center;"><form action="/transactions/{{transaction.id}}/delete" method="POST">
                 <button>&#128465;</button>  </form></td>
         </tr>
-    {% endfor %}
+            {% endfor %}
     </tbody>
     <tfoot>
         <tr>
             <th id="total" colspan="2" style="text-align: center;">Total: </th>
             <td style="text-align: center;"><u>{{total}}</u></td>
         </tr>
-    </tbody> 
+    </tfoot> 
 </table>
     
+<section>
+    {% if alert == True %}
+    <h1>{{user.name}} Watch out you are nearing your spending limit !!!</h1>
+        
+    {% endif %}
+</section>
 
 
 
