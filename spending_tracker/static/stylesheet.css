@@ -8,7 +8,7 @@ body {
     margin: 50px;
     border-width: 20px;
     border-style: dashed;
-    border: whitesmoke;
+    
 }
 
 header h1 {
@@ -69,13 +69,19 @@ input {
 
 
 button{
-        background-color: darkmagenta;
-        border: solid;
-        color: white;
-        padding: 2px;
+        background-color: skyblue;
+        color: darkblue;
+        padding: 10px;
         text-align: center;
         text-decoration: wavy;
         display: inline-block;
         font-size: 16px;
         border-radius: 25px;
+
       }
+
+button:hover{
+    color: slateblue;
+    background-color: turquoise;
+    font-weight: bolder;
+}
