@@ -1,11 +1,9 @@
 from db.run_sql import run_sql
-from models.merchant import Merchant
-from models.transaction import Transaction
 from models.user import User
 
 def save(user):
-    sql = "INSERT INTO users(name) VALUES ( %s ) RETURNING id"
-    values = [user.name]
+    sql = "INSERT INTO users(name, spending_limit, savings_goal) VALUES ( %s, %s, %s ) RETURNING id"
+    values = [user.name, user.spending_limit, user.savings_goal]
     results = run_sql( sql, values )
     user.id = results[0]['id']
     return user

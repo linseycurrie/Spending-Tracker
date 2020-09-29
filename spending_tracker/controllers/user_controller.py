@@ -8,6 +8,7 @@ users_blueprint = Blueprint("users", __name__)
 
 @users_blueprint.route("/users")
 def users():
+    users = user_repository.select_all()
     return render_template("users/index.html", users=users)
 
 @users_blueprint.route("/users/new", methods=['GET'])
@@ -31,4 +32,6 @@ def show_user_transactions():
     filter_transactions = transaction_repository.filter_by_user(user_id)
     total = transaction_repository.total_amount(filter_transactions)
     alert = user.alert_near_limit(total)
+    print(user.__dict__)
+    print(alert)
     return render_template("/users/show.html", user=user, filter_transactions=filter_transactions, total = total, alert=alert)

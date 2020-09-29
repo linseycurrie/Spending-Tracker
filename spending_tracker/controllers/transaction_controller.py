@@ -30,7 +30,7 @@ def create_transactions():
     category    = category_repository.select(request.form['category_id'])
     date        = request.form['date']
     merchant    = merchant_repository.select(request.form['merchant_id'])
-    user        = user_repository.select_all(request.form['user_id'])
+    user        = user_repository.select(request.form['user_id'])
     transaction = Transaction(amount, category, date, merchant, user)
     transaction_repository.save(transaction)
     return redirect("/transactions")
@@ -64,12 +64,15 @@ def filter_month():
     filter = request.form['filter']
     filtered_transactions = transaction_repository.filter_by_month(filter)
     categorys = category_repository.select_all()
-    return render_template("transactions/index.html", transactions=filtered_transactions, categorys=categorys)
+    users = user_repository.select_all()
+    total = transaction_repository.total_amount(filtered_transactions)
+    return render_template("transactions/index.html", transactions=filtered_transactions, categorys=categorys, users=users, total=total)
 
 @transactions_blueprint.route("/transactions/filteredcategory", methods=['POST'])
 def filter_category():
     filter = request.form['filter']
     filtered_transactions = transaction_repository.filter_by_category(filter)
     categorys = category_repository.select_all()
+    users = user_repository.select_all()
     total = transaction_repository.total_amount(filtered_transactions)
-    return render_template("transactions/index.html", transactions=filtered_transactions, categorys=categorys, total=total)
+    return render_template("transactions/index.html", transactions=filtered_transactions, categorys=categorys, users=users, total=total)

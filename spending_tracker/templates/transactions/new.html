@@ -43,7 +43,16 @@
             </select>
         </div>
         <br>
-    <button type="submit">Add</button>
+        <div>
+            <label for="user">Who carried out the Transaction? </label>
+            <select name="user_id" id="user">
+                {% for user in users %} 
+                    <option value="{{ user.id }}">{{ user.name }}</option>
+                {% endfor %} <br>
+            </select>
+        </div>
+
+        <button type="submit">Add</button>
 
     </form>
 
