@@ -2,7 +2,6 @@ from flask import Flask, render_template, redirect, request
 from flask import Blueprint
 from models.category import Category
 import repositories.category_repository as category_repository
-import repositories.transaction_repository as transaction_repository
 
 categorys_blueprint = Blueprint("categorys", __name__)
 

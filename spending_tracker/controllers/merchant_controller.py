@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, request
 from flask import Blueprint
 from models.merchant import Merchant
 import repositories.merchant_repository as merchant_repository
-import repositories.transaction_repository as transaction_repository
+
 
 
 merchants_blueprint = Blueprint("merchants", __name__)

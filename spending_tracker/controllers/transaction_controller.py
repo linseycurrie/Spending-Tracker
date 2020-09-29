@@ -13,14 +13,16 @@ def transactions():
     all_transactions = transaction_repository.select_all()
     total = transaction_repository.total_amount(all_transactions)
     transactions = transaction_repository.sort_transactions(all_transactions)
+    users = user_repository.select_all()
     categorys = category_repository.select_all()
-    return render_template("transactions/index.html", transactions=transactions, total=total, categorys=categorys)
+    return render_template("transactions/index.html", transactions=transactions, total=total, categorys=categorys, users=users)
 
 @transactions_blueprint.route("/transactions/new", methods=['GET'])
 def new_transaction():
     merchants = merchant_repository.select_all()
     categorys = category_repository.select_all()
-    return render_template("transactions/new.html", merchants=merchants, categorys=categorys)
+    users = user_repository.select_all()
+    return render_template("transactions/new.html", merchants=merchants, categorys=categorys, users=users)
 
 @transactions_blueprint.route("/transactions", methods=['POST'])
 def create_transactions():
@@ -28,21 +30,18 @@ def create_transactions():
     category    = category_repository.select(request.form['category_id'])
     date        = request.form['date']
     merchant    = merchant_repository.select(request.form['merchant_id'])
-    transaction = Transaction(amount, category, date, merchant)
+    user        = user_repository.select_all(request.form['user_id'])
+    transaction = Transaction(amount, category, date, merchant, user)
     transaction_repository.save(transaction)
     return redirect("/transactions")
-
-# @transactions_blueprint.route("/transactions/<id>", methods=['GET'])
-# def show_transaction(id):
-#     transactions = transaction_repository.select(id)
-#     return render_template("transactions/show.html", transactions=transactions)
 
 @transactions_blueprint.route("/transactions/<id>/edit", methods=['GET'])
 def edit_transaction(id):
     transaction = transaction_repository.select(id)
     merchants = merchant_repository.select_all()
     categorys = category_repository.select_all()
-    return render_template("transactions/edit.html", transaction=transaction, merchants=merchants, categorys=categorys)
+    users = user_repository.select_all()
+    return render_template("transactions/edit.html", transaction=transaction, merchants=merchants, categorys=categorys, users=users)
 
 @transactions_blueprint.route("/transactions/<id>", methods=['POST'])
 def update_transaction(id):
@@ -50,8 +49,8 @@ def update_transaction(id):
     category = category_repository.select(request.form['category_id'])
     date = request.form['date']
     merchant = merchant_repository.select(request.form['merchant_id'])
-    
-    transaction = Transaction(amount, category, date, merchant, id)
+    user = user_repository.select(request.form['user_id'])
+    transaction = Transaction(amount, category, date, merchant, user, id)
     transaction_repository.update(transaction)
     return redirect("/transactions")
 

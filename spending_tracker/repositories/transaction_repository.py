@@ -5,6 +5,7 @@ from models.transaction import Transaction
 from models.category import Category
 import repositories.merchant_repository as merchant_repository
 import repositories.category_repository as category_repository
+import repositories.user_repository as user_repository
 
 def save(transaction):
     sql = "INSERT INTO transactions (amount, category_id, date, merchant_id) VALUES ( %s, %s, %s, %s ) RETURNING *"
@@ -91,5 +92,19 @@ def filter_by_category(category_id):
         merchant = merchant_repository.select( row['merchant_id'] )
         category = category_repository.select( row['category_id'])
         transaction = Transaction( row['amount'], category, row['date'], merchant, row['id'] )
+        transactions.append(transaction)
+    return transactions
+
+def filter_by_user(user_id):
+    transactions = []
+    sql = "SELECT * FROM users WHERE user_id = %s "
+    values = [user_id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        merchant = merchant_repository.select( row['merchant_id'] )
+        category = category_repository.select( row['category_id'] )
+        user = user_repository.select( row['user_id'] )
+        transaction = Transaction( row['amount'], category, row['date'], merchant, user, row['id'] )
         transactions.append(transaction)
     return transactions

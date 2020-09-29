@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+    
+
+
+<h2>{{user.name}}'s Transactions</h2>
+
+<table class='table' style="width:80%">
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>Merchant</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    {% for transaction in filter_transactions %}
+    <tbody>
+        <tr>
+            <td style="text-align: center;">{{transaction.category.name}}</td>
+            <td style="text-align: center;">{{transaction.merchant.name}}</td>
+            <td style="text-align: center;">{{transaction.amount}}</td>
+            <td style="text-align: center;">{{transaction.date}}</td>
+            <td style="text-align: center;"><form action="/transactions/{{transaction.id}}/edit">
+                <button>&#x270e;</button> </form></td>
+            <td style="text-align: center;"><form action="/transactions/{{transaction.id}}/delete" method="POST">
+                <button>&#128465;</button>  </form></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <th id="total" colspan="2" style="text-align: center;">Total: </th>
+            <td style="text-align: center;"><u>{{total}}</u></td>
+        </tr>
+    </tbody> 
+</table>
+    
+
+
+
+{% endblock %}

@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from models.user import User
-import repositories.merchant_repository as merchant_repository
 import repositories.transaction_repository as transaction_repository
 import repositories.user_repository as user_repository
 
@@ -23,3 +22,9 @@ def create_user():
     user = User(name, spending_limit, savings_goal)
     user_repository.save(user)
     return render_template("/users/index.html", user=user)
+
+@users_blueprint.route("/users/<id>", methods=['GET'])
+def show_user_transactions():
+    user = user_repository.select(id)
+    filter_transactions = transaction_repository.filter_by_user(user)
+    return render_template("/users/show.html", user=user, filter_transactions=filter_transactions)
