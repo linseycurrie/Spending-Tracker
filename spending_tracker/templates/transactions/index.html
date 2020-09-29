@@ -47,44 +47,52 @@
 </table>
 
 <h3>Sort Transactions by:</h3>
-    <form action="/transactions/filteredmonth" method="POST">
-    <label for="filter"><h3>Sort by Month: </h3></label>
-        <select name="filter" id="filter">
-            <option value="01">January</option>
-            <option value="02">February</option>
-            <option value="03">March</option>
-            <option value="04">April</option>
-            <option value="05">May</option>
-            <option value="06">June</option>
-            <option value="07">July</option>
-            <option value="08">August</option>
-            <option value="09">September</option>
-            <option value="10">October</option>
-            <option value="11">November</option>
-            <option value="12">December</option>
-        </select>
-        <button type="submit">Submit</button>
-    </form>
+<div class="flex-container">
+    <section class="contents">
+        <form action="/transactions/filteredmonth" method="POST">
+        <label for="filter"><h3>Sort by Month: </h3></label>
+            <select name="filter" id="filter">
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
 
-    <form action="/transactions/filteredcategory" method="POST">
-        <label for="filter"><h3>Sort by Category: </h3></label>
-        <select name="filter" id="filter">
-            {% for category in categorys %}
-                <option value="{{category.id}}">{{ category.name }}</option>
+    <section class="contents">
+
+        <form action="/transactions/filteredcategory" method="POST">
+            <label for="filter"><h3>Sort by Category: </h3></label>
+            <select name="filter" id="filter">
+                {% for category in categorys %}
+                    <option value="{{category.id}}">{{ category.name }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+        
+    <section class="contents">
+        <form action="/users/filter" method="POST">
+            <label for="user_id"><h3>Sort by User: </h3></label>
+            <select name="user_id" id="user_id">
+            {% for user in users %}
+                    <option value="{{user.id}}">{{ user.name }}</option>
             {% endfor %}
-        </select>
-        <button type="submit">Submit</button>
-    </form>
-
-    
-    <form action="/users/filter" method="POST">
-        <label for="user_id"><h3>Sort by User: </h3></label>
-        <select name="user_id" id="user_id">
-        {% for user in users %}
-                <option value="{{user.id}}">{{ user.name }}</option>
-        {% endfor %}
-        </select>
-        <button type="submit">Submit</button>
-    </form>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+</div>
 
 {% endblock %}

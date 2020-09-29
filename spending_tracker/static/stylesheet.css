@@ -5,7 +5,16 @@ body {
     grid-row: 2fr 2fr 2fr;
     grid-column: 2fr 2fr 2fr;
     padding: 10px;
-    margin: 100px;
+    margin: 50px;
+    border-width: 20px;
+    border-style: dashed;
+    border: whitesmoke;
+}
+
+header h1 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-right: 20px;
+    color: rebeccapurple;
 }
 
 header button {
@@ -13,12 +22,6 @@ header button {
     display: flex;
     flex-direction: row wrap;
     justify-content: space-between;
-
-}
-
-.table {
-    background-color: paleturquoise;
-    position: center;
 }
 
 header{
@@ -28,7 +31,17 @@ header{
     margin: 0px;
     padding: 0px;
 }
+ 
+body > header > img {
+    max-width: 20%;
+    max-height: auto;
+    resize: 10%;
+}
 
+.table {
+    background-color: paleturquoise;
+    position: center;
+}
 
 input {
     width: 80%;
@@ -36,16 +49,6 @@ input {
     position: center;
     padding: 10px;
     margin: 10px;
-}
-
-body > header > img {
-    max-width: 20%;
-    max-height: auto;
-    resize: 10%;
-}
-
-.user-button {
-    color: white;
 }
 
 .flex-container {
@@ -74,9 +77,5 @@ button{
         text-decoration: wavy;
         display: inline-block;
         font-size: 16px;
+        border-radius: 25px;
       }
-.icon-button{
-    background-color: white;
-    background-origin: none;
-    padding: 5px;
-}
