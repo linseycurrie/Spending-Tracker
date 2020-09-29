@@ -6,33 +6,27 @@ body {
     grid-column: 2fr 2fr 2fr;
     padding: 10px;
     margin: 100px;
-    display: inline;
-    border: 10px;
-    border: deeppink;
-    border-width: 10px;
 }
 
-.container {
-    margin: 10px;
+header button {
+    border-radius: 25px;
+    display: flex;
+    flex-direction: row wrap;
+    justify-content: space-between;
+
+}
+
+.table {
+    background-color: paleturquoise;
+    position: center;
 }
 
 header{
     display: flex;
     justify-content: center;
-}
-
-nav > ul {
-    
-}
-
-nav > ul > li {
-    background-color: rgb(255, 255, 0);
-    color: darkslateblue;
-    list-style: none;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: powderblue;
     margin: 0px;
     padding: 0px;
-    font-weight: bolder;
 }
 
 
