@@ -12,7 +12,7 @@
         <select name="category_id" id="category">
             {% for category in categorys %}
                 {% if category.activated == False %}
-                    <option value="{{category.id" disabled>{{category.name}}</option>
+                    <option value="{{category.id}}" disabled>{{category.name}}</option>
                     
                 {% else %}
                     <option value="{{ category.id }}"
@@ -40,10 +40,20 @@
             {% endfor %}
         </select>
     </div>
-
+    <br>
+    <div>
+        <label for="user">User: </label>
+        <select name="user_id" id="user">
+            {% for user in users %}
+                <option value="{{user.id}}" {% if transaction.user.id == user.id%} selected=selected {% endif %}>
+                    {{user.name}}
+                </option>   
+            {% endfor %}
+        </select>
+    </div>
+    <br>
     <button type="submit">Save</button>
     
-
 </form>
 
 
