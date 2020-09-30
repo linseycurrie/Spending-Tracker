@@ -1,4 +1,6 @@
 # Project1--Spending-Tracker
+First CodeClan individual project creating a spending tracker using Python, Flask, HTML/CSS PostgreSQL and the psycopg.
+
 ## Brief:
 
 ### Spending Tracker
@@ -25,4 +27,19 @@ Monzo, MoneyDashboard, lots of mobile/online banking apps
 
 
 
-#Running Instructions
+#Running Instructions for opening the App using Terminal
+
+To Clone,
+git clone https://github.com/linseycurrie/Project1--Spending-Tracker.git
+
+Create Database and open file,
+ - createdb money_tracker
+ - psql -d money_tracker -f money_tracker.sql
+
+To run file,
+ - python3 console.py
+
+Open app,
+- flask run
+
+
