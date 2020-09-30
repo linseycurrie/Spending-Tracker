@@ -8,12 +8,13 @@ class User:
 
     def alert_near_limit(self, total):
         float_total = float(total)
+        print(float_total * 0.9)
         if (self.spending_limit == float_total):
             return "on"
-        if ((self.spending_limit >= (float_total * 0.9)) and (self.spending_limit < float_total)):
-            return "warning"
         elif (float_total > self.spending_limit) :
             return "over"
+        elif ((float_total * 0.9) < self.spending_limit > float_total):
+            return "warning"
         else:
             return "ok"
 
