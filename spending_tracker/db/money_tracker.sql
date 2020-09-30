@@ -13,7 +13,7 @@ CREATE TABLE merchants(
 CREATE TABLE users(
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
-    spending_limit DECIMAL(5,3)
+    spending_limit DECIMAL(10,2)
 );
 
 CREATE TABLE categorys (
@@ -24,7 +24,7 @@ CREATE TABLE categorys (
 
 CREATE TABLE transactions(
     id SERIAL PRIMARY KEY,
-    amount DECIMAL(5,3),
+    amount DECIMAL(10,2),
     category_id INT REFERENCES categorys(id) ON DELETE CASCADE,
     date DATE,
     merchant_id INT REFERENCES merchants(id) ON DELETE CASCADE,

@@ -29,9 +29,9 @@ def show_user_transactions():
     user_id = request.form['user_id']
     user = user_repository.select(user_id)
     filter_transactions = transaction_repository.filter_by_user(user_id)
-    total = transaction_repository.total_amount(filter_transactions)
-    alert = user.alert_near_limit(total)
-    return render_template("/users/show.html", user=user, filter_transactions=filter_transactions, total = total, alert=alert)
+    filtered_total = transaction_repository.total_amount(filter_transactions)
+    alert = user.alert_near_limit(filtered_total)
+    return render_template("/users/show.html", user=user, filter_transactions=filter_transactions, filtered_total = filtered_total, alert=alert)
 
 @users_blueprint.route("/users/<id>/edit", methods=['GET'])
 def edit_user(id):

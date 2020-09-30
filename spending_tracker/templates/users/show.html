@@ -33,7 +33,7 @@
     <tfoot>
         <tr>
             <th id="total" colspan="2" style="text-align: center;">Total: </th>
-            <td style="text-align: center;"><u>{{total}}</u></td>
+            <td style="text-align: center;"><u>{{filtered_total}}</u></td>
         </tr>
     </tfoot> 
 </table>
@@ -41,6 +41,13 @@
 <section class="alert">
     {% if alert == "over" %}
         <h1 >{{user.name}}, you are over your spending limit !!!</h1>
+        <div class ="limit"></div>
+            <h4 style="color: black; font-size: 25px;">Your spending limit is {{user.spending_limit}}. Do you wish to increase it ?</h4>
+            <form action="/users/{{user.id}}/edit"><button>Yes</button></form>
+            <form action="/transactions"><button>No</button></form>
+        </div>
+    {% elif alert == "on" %}
+        <h1 >{{user.name}}, you are at your spending limit !!!</h1>
         <div class ="limit"></div>
             <h4 style="color: black; font-size: 25px;">Your spending limit is {{user.spending_limit}}. Do you wish to increase it ?</h4>
             <form action="/users/{{user.id}}/edit"><button>Yes</button></form>
