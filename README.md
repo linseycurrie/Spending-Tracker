@@ -1,4 +1,4 @@
-##Spending-Tracker
+## Spending-Tracker
 First CodeClan individual project creating in 7 days using Python, Flask, HTML/CSS PostgreSQL and the psycopg.
 
 ## Brief:
