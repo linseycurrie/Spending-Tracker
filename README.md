@@ -1,5 +1,5 @@
-# Project1--Spending-Tracker
-First CodeClan individual project creating a spending tracker using Python, Flask, HTML/CSS PostgreSQL and the psycopg.
+Spending-Tracker
+First CodeClan individual project creating in 7 days using Python, Flask, HTML/CSS PostgreSQL and the psycopg.
 
 ## Brief:
 
@@ -41,5 +41,4 @@ To run file,
 
 Open app,
 - flask run
-
 
