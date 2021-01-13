@@ -1,1 +1,1 @@
-web: gunicorn spending-tracker:app
+web: gunicorn savy-money-tracker:app
