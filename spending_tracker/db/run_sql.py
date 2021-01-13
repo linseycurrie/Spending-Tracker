@@ -1,11 +1,14 @@
+import os
 import psycopg2
 import psycopg2.extras as ext 
+
+DATABASE_URL = os.environ['DATABASE_URL']
 
 def run_sql(sql, values=None):
     results = []
     conn = None
     try:
-        conn = psycopg2.connect("dbname='money_tracker'")
+        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
         cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         cur.execute(sql, values)
         conn.commit()
