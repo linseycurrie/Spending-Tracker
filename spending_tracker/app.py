@@ -1,9 +1,9 @@
 from flask import Flask, render_template
 
-from controllers.merchants_controller import merchants_blueprint
-from controllers.transactions_controller import transactions_blueprint
-from controllers.users_controller import users_blueprint
-from controllers.categorys_controller import categorys_blueprint
+from .controllers.merchants_controller import merchants_blueprint
+from .controllers.transactions_controller import transactions_blueprint
+from .controllers.users_controller import users_blueprint
+from .controllers.categorys_controller import categorys_blueprint
 
 app = Flask(__name__)
 
