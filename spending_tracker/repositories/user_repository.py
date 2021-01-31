@@ -1,5 +1,5 @@
-from db.run_sql import run_sql
-from models.user import User
+from ..db.run_sql import run_sql
+from ..models.user import User
 
 def save(user):
     sql = "INSERT INTO users(name, spending_limit) VALUES ( %s, %s ) RETURNING id"

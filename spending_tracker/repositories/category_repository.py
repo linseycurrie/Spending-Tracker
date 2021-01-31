@@ -1,5 +1,5 @@
-from db.run_sql import run_sql
-from models.category import Category
+from ..db.run_sql import run_sql
+from ..models.category import Category
 
 def save(category):
     sql = "INSERT INTO categorys (name, activated) VALUES ( %s, %s ) RETURNING *"

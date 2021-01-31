@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, request
 from flask import Blueprint
-from models.category import Category
-import repositories.category_repository as category_repository
+from ..models.category import Category
+from ..repositories import category_repository as category_repository
 
 categorys_blueprint = Blueprint("categorys", __name__)
 

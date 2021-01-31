@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
-from models.user import User
-import repositories.transaction_repository as transaction_repository
-import repositories.user_repository as user_repository
+from ..models.user import User
+from ..repositories import transaction_repository as transaction_repository
+from ..repositories import user_repository as user_repository
 
 users_blueprint = Blueprint("users", __name__)
 

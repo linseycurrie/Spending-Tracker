@@ -1,11 +1,11 @@
-from db.run_sql import run_sql
-from models.user import User
-from models.merchant import Merchant
-from models.transaction import Transaction
-from models.category import Category
-import repositories.merchant_repository as merchant_repository
-import repositories.category_repository as category_repository
-import repositories.user_repository as user_repository
+from ..db.run_sql import run_sql
+from ..models.user import User
+from ..models.merchant import Merchant
+from ..models.transaction import Transaction
+from ..models.category import Category
+from . import merchant_repository as merchant_repository
+from . import category_repository as category_repository
+from . import user_repository as user_repository
 
 def save(transaction):
     sql = "INSERT INTO transactions (amount, category_id, date, merchant_id, user_id) VALUES ( %s, %s, %s, %s, %s ) RETURNING *"

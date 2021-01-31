@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
-from models.transaction import Transaction
-import repositories.merchant_repository as merchant_repository
-import repositories.transaction_repository as transaction_repository
-import repositories.user_repository as user_repository
-import repositories.category_repository as category_repository
+from ..models.transaction import Transaction
+from ..repositories import merchant_repository as merchant_repository
+from ..repositories import transaction_repository as transaction_repository
+from ..repositories import user_repository as user_repository
+from ..repositories import category_repository as category_repository
 
 transactions_blueprint = Blueprint("transactions", __name__)
 
